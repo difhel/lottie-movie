@@ -4,7 +4,8 @@ default:
 deploy_preview:
   stage: deploy
   except:
-    - main
+    - bun
+    - master
   script:
     - npm install --global vercel
     - npm install --global bun
@@ -15,7 +16,7 @@ deploy_preview:
 deploy_production:
   stage: deploy
   only:
-    - main
+    - bun
   script:
     - npm install --global vercel
     - npm install --global bun
