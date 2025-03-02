@@ -9,7 +9,7 @@ enum TabbarItems {
 }
 
 function App() {
-  const [currentTab, setCurrentTab] = useState<TabbarItems>(TabbarItems.FILMS)
+  const [currentTab, setCurrentTab] = useState<TabbarItems>(TabbarItems.FILMS);
   return (
     <>
       <Tabbar>
