@@ -1,33 +1,32 @@
+import { Icon28MagicWandOutline, Icon28Video, Icon28ListLikeFill } from '@vkontakte/icons'
+import styles from './App.module.scss'
+import { Tabbar } from '@telegram-apps/telegram-ui'
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+enum TabbarItems {
+  FILMS = 'films',
+  FEELING_LUCKY = 'feeling_lucky',
+  REELS = 'reels',
+}
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  const [currentTab, setCurrentTab] = useState<TabbarItems>(TabbarItems.FILMS)
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Tabbar>
+        <Tabbar.Item text="Фильмы" onClick={() => setCurrentTab(TabbarItems.FILMS)} selected={currentTab === TabbarItems.FILMS}>
+         <Icon28ListLikeFill />
+        </Tabbar.Item>
+        <Tabbar.Item
+          text="Мне повезет"
+          className={styles.feelingLucky}
+          onClick={() => setCurrentTab(TabbarItems.FEELING_LUCKY)}
+        >
+          <Icon28MagicWandOutline />
+        </Tabbar.Item>
+        <Tabbar.Item text="Reels" onClick={() => setCurrentTab(TabbarItems.REELS)} selected={currentTab === TabbarItems.REELS}>
+          <Icon28Video />
+        </Tabbar.Item>
+      </Tabbar>
     </>
   )
 }
