@@ -2,6 +2,9 @@ import { Icon28MagicWandOutline, Icon28Video, Icon28ListLikeFill } from '@vkonta
 import styles from './App.module.scss'
 import { Tabbar } from '@telegram-apps/telegram-ui'
 import { useState } from 'react'
+import { Films } from './pages/Films/Films'
+import { Loading } from './components/Loading/Loading'
+
 enum TabbarItems {
   FILMS = 'films',
   FEELING_LUCKY = 'feeling_lucky',
@@ -10,8 +13,29 @@ enum TabbarItems {
 
 function App() {
   const [currentTab, setCurrentTab] = useState<TabbarItems>(TabbarItems.FILMS);
+
+  function renderTabContent() {
+    switch (currentTab) {
+      case TabbarItems.FILMS:
+        return <Films />
+      case TabbarItems.FEELING_LUCKY:
+        return (
+          <Loading
+            description="Выбираем лучший фильм для просмотра из сохраненных на основе ваших последних интересов"
+            header="Генерируем рекомендацию..."
+          />
+        )
+      case TabbarItems.REELS:
+        return (
+          <Loading
+            description="Скачиваем с YouTube (запрещен в РФ) самые конченные ролики под стать интеллекту Андрея"
+            header="Генерируем рилсы..." />
+        )
+    }
+  }
   return (
     <>
+      {renderTabContent()}
       <Tabbar>
         <Tabbar.Item text="Фильмы" onClick={() => setCurrentTab(TabbarItems.FILMS)} selected={currentTab === TabbarItems.FILMS}>
          <Icon28ListLikeFill />
