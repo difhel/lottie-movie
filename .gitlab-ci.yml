@@ -4,10 +4,14 @@ stages:
 
 build:
   stage: build
-  image: node:latest
+  image: oven/bun
+  cache:
+    key: ${CI_PROJECT_ID}
+    paths:
+      - ~/.bun/install/cache/v*
   script:
-    - npm install
-    - npm run build
+    - bun install --frozen-lockfile --production
+    - bun run build
   artifacts:
     paths:
       - dist/
