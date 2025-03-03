@@ -10,12 +10,13 @@
 }
 
 body {
-  min-height: 100vh;
-  min-height: 100dvh;
+  height: calc(100vh - var(--safe-area-inset-bottom));
+  height: calc(100dvh - var(--safe-area-inset-bottom));
+  overflow: scroll;
   margin: 0;
   padding: 0.5rem !important;
-  padding-bottom: calc(0.5rem + var(--safe-area-inset-bottom)) !important;
   box-sizing: border-box;
+  background: var(--tg-theme-bg-color) !important;
 }
 
 :global {
