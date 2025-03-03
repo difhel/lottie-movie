@@ -1,25 +1,25 @@
-stages:
-  - build
-  - deploy_artifacts
+default:
+  image: node:20
 
-build:
-  stage: build
-  image: oven/bun
-  cache:
-    key: ${CI_PROJECT_ID}
-    paths:
-      - ~/.bun/install/cache/v*
+deploy_preview:
+  stage: deploy
+  except:
+    - bun
+    - master
   script:
-    - bun install --frozen-lockfile --development
-    - bun run build
-  artifacts:
-    paths:
-      - dist/
-    expire_in: 1 week
+    - npm install --global vercel
+    - npm install --global bun
+    - vercel pull --yes --environment=preview --token=$VERCEL_TOKEN
+    - vercel build --token=$VERCEL_TOKEN
+    - vercel deploy --prebuilt  --token=$VERCEL_TOKEN
 
-deploy_artifacts:
-  stage: deploy_artifacts
+deploy_production:
+  stage: deploy
+  only:
+    - bun
   script:
-    - echo "Artifacts are stored for further use."
-  dependencies:
-    - build
+    - npm install --global vercel
+    - npm install --global bun
+    - vercel pull --yes --environment=production --token=$VERCEL_TOKEN
+    - vercel build --prod --token=$VERCEL_TOKEN
+    - vercel deploy --prebuilt --prod --token=$VERCEL_TOKEN
