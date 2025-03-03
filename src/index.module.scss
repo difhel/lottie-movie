@@ -19,9 +19,9 @@ body {
   background: var(--tg-theme-bg-color) !important;
 }
 
-// html {
-//   overscroll-behavior: none;
-// }
+html {
+  overscroll-behavior: none;
+}
 
 :global {
   body.ios {
