@@ -1,6 +1,7 @@
 import { memo } from 'react'
 import styles from './Reel.module.scss'
 import { ReelFilmInfo } from './ReelFilmInfo'
+import { ReelFilmLike } from './ReelFilmLike';
 
 interface OwnProps {
   film: {
@@ -23,6 +24,7 @@ export const Reel = memo<OwnProps>(({ film, id, isLiked, likesCount }) => {
         Your browser does not support the video tag. Please update your browser.
       </video>
       <ReelFilmInfo {...film} />
+      <ReelFilmLike isLiked={false} likesCount={23} />
     </div>
   )
 });
