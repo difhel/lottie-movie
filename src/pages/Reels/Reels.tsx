@@ -4,6 +4,7 @@ import { ReelType } from '../../types';
 import styles from './Reels.module.scss';
 import { TabsItem } from '@telegram-apps/telegram-ui/dist/components/Navigation/TabsList/components/TabsItem/TabsItem';
 import { TabsList } from '@telegram-apps/telegram-ui';
+
 const reel: ReelType = {
   id: 1,
   film: {

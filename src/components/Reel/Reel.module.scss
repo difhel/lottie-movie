@@ -10,20 +10,32 @@
 }
 
 .reelInfo {
-    position: absolute;
-    bottom: 0;
+  position: absolute;
+  bottom: 0;
+  padding-left: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 
 .reelInfoContent {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding-left: 0.5rem;
-    padding-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .reelImage {
-    border-radius: 100rem;
-    height: 2rem;
-    width: 2rem;
+  border-radius: 100rem;
+  height: 2rem;
+  width: 2rem;
+}
+
+.reelInfoDescription {
+  color: var(--tgui--hint_color);
+}
+
+.reelInfoDescriptionOneLine {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: calc(100vw - 0.5rem);
 }
