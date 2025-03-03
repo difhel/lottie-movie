@@ -1,16 +1,15 @@
 .reels {
-    position: relative;
-    width: 100vw;
-    height: calc(100vh - var(--navbar-height));
-    height: calc(100dvh - var(--navbar-height));
-    margin-left: -0.5rem;
-    margin-top: -0.5rem;
+  position: relative;
+  width: 100vw;
+  height: calc(100vh - var(--navbar-height));
+  height: calc(100dvh - var(--navbar-height));
+  margin-left: -0.5rem;
+  margin-top: -0.5rem;
+  background: #000000;
 }
 
 .reelsHeader {
-    position: absolute;
-    top: calc(
-        var(--tg-content-safe-area-inset-top, 0) + var(--tg-safe-area-inset-top, 0)
-    );
-    width: 100%;
+  position: absolute;
+  top: calc(var(--tg-content-safe-area-inset-top, 0) + var(--tg-safe-area-inset-top, 0));
+  width: 100%;
 }
