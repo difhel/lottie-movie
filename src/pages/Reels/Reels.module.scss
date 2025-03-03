@@ -10,7 +10,7 @@
 
 .reelsHeader {
   position: absolute;
-  top: calc(var(--tg-content-safe-area-inset-top, 0) + var(--tg-safe-area-inset-top, 0));
+  top: var(--safe-area-inset-top);
   width: 100%;
   z-index: 2;
 }

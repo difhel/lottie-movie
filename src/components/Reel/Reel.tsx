@@ -46,7 +46,7 @@ export const Reel = memo<OwnProps>(({ film, id, isLiked, likesCount }) => {
   }, [film.title, id]);
 
   const handleShareStory = useCallback(() => {
-    const imgUrl = 'https://sun9-37.userapi.com/impg/PcA6ymv3SU-xEV5HrfS76GIfjlXU48CuEu_DKQ/7gKejaRJxKc.jpg?size=804x1748&quality=95&sign=5fa7f9fad066551665f42d430212625d&type=album';
+    const imgUrl = 'https://sun9-14.userapi.com/impg/7MwipDpm2gR7Tni-TYldJfjHi3d0rk6_gYD0nw/3mq9giu--e0.jpg?size=804x1430&quality=95&sign=fea2c30da72631bddc8b26780e80f7db&type=album';
     const url = `https://t.me/lottiemoviebot/app?startapp=reel_${id}`;
     window.Telegram?.WebApp.shareToStory(imgUrl, {
       text: `${film.title} - Сохраните для просмотра в Lottie Movie`,
