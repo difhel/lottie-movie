@@ -10,7 +10,7 @@ build:
     paths:
       - ~/.bun/install/cache/v*
   script:
-    - bun install --frozen-lockfile --production
+    - bun install --frozen-lockfile --development
     - bun run build
   artifacts:
     paths:
