@@ -8,9 +8,9 @@ interface OwnProps {
   title: string;
   urlPreview?: string;
   subtitle?: string;
-  onClick: () => void;
-  onEdit: () => void;
-  onDelete: () => void;
+  onClick: NoneToVoidFunction;
+  onEdit: NoneToVoidFunction;
+  onDelete: NoneToVoidFunction;
 }
 
 export const NoteText = memo<OwnProps>(({ title, urlPreview, subtitle, onClick, onEdit, onDelete }) => {

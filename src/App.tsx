@@ -5,6 +5,7 @@ import { useState } from 'react'
 import { Films } from './pages/Films/Films'
 import { Loading } from './components/Loading/Loading'
 import { Reels } from './pages/Reels/Reels'
+import { useEffectOnce } from './hooks/useEffectOnce'
 
 enum TabbarItems {
   FILMS = 'films',
@@ -14,6 +15,10 @@ enum TabbarItems {
 
 function App() {
   const [currentTab, setCurrentTab] = useState<TabbarItems>(TabbarItems.FILMS);
+
+  useEffectOnce(() => {
+    window.Telegram?.WebApp.disableVerticalSwipes();
+  });
 
   function renderTabContent() {
     switch (currentTab) {
