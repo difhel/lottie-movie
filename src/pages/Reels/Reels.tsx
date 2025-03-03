@@ -27,13 +27,13 @@ export const Reels = memo(() => {
       })
       window.Telegram.WebApp.requestFullscreen();
       window.Telegram.WebApp.lockOrientation();
-    } catch { alert('Обновите Telegram для лучшего опыта') }
+    } catch { /* do nothing - error can only be thrown on incorrect environment */ }
 
     return () => {
       try {
         window.Telegram!.WebApp.exitFullscreen();
         window.Telegram!.WebApp.unlockOrientation();
-      } catch { /* do nothing */ }
+      } catch { /* do nothing - error can only be thrown on incorrect environment */ }
     }
   }, []);
 

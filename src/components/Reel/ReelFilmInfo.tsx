@@ -2,6 +2,7 @@ import { memo } from 'react'
 import { Button, Headline, Text } from '@telegram-apps/telegram-ui'
 import styles from './Reel.module.scss'
 import { type FilmType } from '../../types';
+import { shortenText } from '../../util/shortenText';
 
 type OwnProps = FilmType;
 
@@ -27,7 +28,7 @@ export const ReelFilmInfo = memo<OwnProps>(({ title, image, description, status 
         </Button>
       </div>
       <div className={styles.reelInfoDescription}>
-        <Text weight="3">{description}</Text>
+        <Text weight="3">{shortenText(description, 100)}</Text>
       </div>
     </div>
   )
