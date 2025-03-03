@@ -32,6 +32,8 @@ export default defineConfig({
           if (id.includes('sentry')) return 'sentry';
           if (id.includes('lottie')) return 'lottie';
           if (id.includes('components')) return 'components';
+          if (id.includes('telegram-ui')) return 'telegram-ui';
+          if (id.includes('vkontakte')) return 'icons';
           
           const animations = ['duckFreeStars', 'giftBlue', 'premium', 'stars'];
           

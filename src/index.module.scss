@@ -14,10 +14,12 @@ body {
   min-height: 100dvh;
   margin: 0;
   padding: 0.5rem;
+  box-sizing: border-box;
 }
 
 :global {
   html {
+    --navbar-height: 5.375rem;
     --color-violet: #4200b3;
     --color-blue: #00b3ff;
   }

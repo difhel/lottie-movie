@@ -4,6 +4,7 @@ import { Tabbar } from '@telegram-apps/telegram-ui'
 import { useState } from 'react'
 import { Films } from './pages/Films/Films'
 import { Loading } from './components/Loading/Loading'
+import { Reels } from './pages/Reels/Reels'
 
 enum TabbarItems {
   FILMS = 'films',
@@ -26,11 +27,7 @@ function App() {
           />
         )
       case TabbarItems.REELS:
-        return (
-          <Loading
-            description="Скачиваем с YouTube (запрещен в РФ) самые конченные ролики под стать интеллекту Андрея"
-            header="Генерируем рилсы..." />
-        )
+        return <Reels />
     }
   }
   return (

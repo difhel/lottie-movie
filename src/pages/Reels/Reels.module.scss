@@ -1,0 +1,14 @@
+.reels {
+    position: relative;
+    width: 100vw;
+    height: calc(100vh - var(--navbar-height));
+    height: calc(100dvh - var(--navbar-height));
+    margin-left: -0.5rem;
+    margin-top: -0.5rem;
+}
+
+.reelsHeader {
+    position: absolute;
+    top: var(--tg-safe-area-inset-top, 0);
+    width: 100%;
+}
