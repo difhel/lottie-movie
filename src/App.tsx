@@ -1,6 +1,6 @@
 import { Icon28MagicWandOutline, Icon28Video, Icon28ListLikeFill } from '@vkontakte/icons'
 import styles from './App.module.scss'
-import { AppRoot, Tabbar } from '@telegram-apps/telegram-ui'
+import { Tabbar } from '@telegram-apps/telegram-ui'
 import { useState } from 'react'
 import { Films } from './pages/Films/Films'
 import { Loading } from './components/Loading/Loading'
@@ -36,7 +36,7 @@ function App() {
     }
   }
   return (
-    <AppRoot appearance={currentTab === TabbarItems.REELS ? 'dark' : undefined}>
+    <>
       {renderTabContent()}
       <Tabbar>
         <Tabbar.Item text="Фильмы" onClick={() => setCurrentTab(TabbarItems.FILMS)} selected={currentTab === TabbarItems.FILMS}>
@@ -53,7 +53,7 @@ function App() {
           <Icon28Video />
         </Tabbar.Item>
       </Tabbar>
-    </AppRoot>
+    </>
   )
 }
 
