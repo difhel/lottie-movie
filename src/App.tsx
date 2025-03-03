@@ -19,6 +19,9 @@ function App() {
 
   useEffectOnce(() => {
     window.Telegram?.WebApp.disableVerticalSwipes();
+    if (window.Telegram?.WebApp.platform === 'ios') {
+      document.body.classList.add('ios');
+    }
   });
 
   function renderTabContent() {

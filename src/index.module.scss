@@ -19,11 +19,14 @@ body {
   background: var(--tg-theme-bg-color) !important;
 }
 
-html {
-  overscroll-behavior: none;
-}
+// html {
+//   overscroll-behavior: none;
+// }
 
 :global {
+  body.ios {
+    --navbar-height: 3.5625rem;
+  }
   html {
     --navbar-height: 5.375rem;
     --color-violet: #4200b3;
