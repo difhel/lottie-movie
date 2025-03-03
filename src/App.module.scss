@@ -14,3 +14,7 @@
     z-index: -1;
   }
 }
+
+.navbar {
+  bottom: var(--safe-area-inset-bottom) !important;
+}

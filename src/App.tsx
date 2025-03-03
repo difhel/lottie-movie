@@ -42,7 +42,7 @@ function App() {
   return (
     <AppRoot appearance={currentTab === TabbarItems.REELS ? 'dark' : defaultTheme}>
       {renderTabContent()}
-      <Tabbar>
+      <Tabbar className={styles.navbar}>
         <Tabbar.Item text="Фильмы" onClick={() => setCurrentTab(TabbarItems.FILMS)} selected={currentTab === TabbarItems.FILMS}>
          <Icon28ListLikeFill />
         </Tabbar.Item>
