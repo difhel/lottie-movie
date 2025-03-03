@@ -37,15 +37,15 @@ export const ReelFilmLike = memo<OwnProps>(({
     <div onClick={handleClick} className={styles.reelFilmLike}>
       {isLikedRef.current ? (
         <>
-          <Icon28LikeFillRed className={styles.reelFilmLikeIcon} />
-          <Text weight="3">
+          <Icon28LikeFillRed className={styles.reelFilmLikeItem} />
+          <Text weight="3" className={styles.reelFilmLikeItem}>
             {likesCountRef.current}
           </Text>
         </>
       ) : (
         <>
-          <Icon28LikeOutline className={styles.reelFilmLikeIcon} />
-          <Text weight="3">
+          <Icon28LikeOutline className={styles.reelFilmLikeItem} />
+          <Text weight="3" className={styles.reelFilmLikeItem}>
             {likesCountRef.current}
           </Text>
         </>

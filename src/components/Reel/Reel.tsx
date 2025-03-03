@@ -6,7 +6,7 @@ import { Icon20CopyOutline, Icon28ChainOutline, Icon28DownloadOutline, Icon28Sha
 import { Cell, IconButton, Modal, Snackbar, Title } from '@telegram-apps/telegram-ui';
 import { ModalHeader } from '@telegram-apps/telegram-ui/dist/components/Overlays/Modal/components/ModalHeader/ModalHeader';
 import { openUrl } from '../../util/openUrl';
-
+import { STORY_IMAGE_URL } from '../../config';
 interface OwnProps {
   film: {
     id: number;
@@ -46,7 +46,7 @@ export const Reel = memo<OwnProps>(({ film, id, isLiked, likesCount }) => {
   }, [film.title, id]);
 
   const handleShareStory = useCallback(() => {
-    const imgUrl = 'https://sun9-14.userapi.com/impg/7MwipDpm2gR7Tni-TYldJfjHi3d0rk6_gYD0nw/3mq9giu--e0.jpg?size=804x1430&quality=95&sign=fea2c30da72631bddc8b26780e80f7db&type=album';
+    const imgUrl = STORY_IMAGE_URL;
     const url = `https://t.me/lottiemoviebot/app?startapp=reel_${id}`;
     window.Telegram?.WebApp.shareToStory(imgUrl, {
       text: `${film.title} - Сохраните для просмотра в Lottie Movie`,
