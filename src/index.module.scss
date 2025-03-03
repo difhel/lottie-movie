@@ -19,6 +19,10 @@ body {
   background: var(--tg-theme-bg-color) !important;
 }
 
+html {
+  overscroll-behavior: none;
+}
+
 :global {
   html {
     --navbar-height: 5.375rem;
