@@ -8,6 +8,8 @@ import { ModalHeader } from '@telegram-apps/telegram-ui/dist/components/Overlays
 import { openUrl } from '../../util/openUrl';
 import { STORY_IMAGE_URL } from '../../config';
 import { downloadFile } from '../../util/downloadFile';
+import { buildClassName } from '../../util/buildClassName';
+
 interface OwnProps {
   film: {
     id: number;
@@ -25,6 +27,8 @@ interface OwnProps {
 export const Reel = memo<OwnProps>(({ film, id, isLiked, likesCount, setIsUnfoldedDescription }) => {
   const [snackbar, setSnackbar] = useState<React.ReactNode>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isUnfoldedDescription, setIsUnfoldedDescriptionLocal] = useState(false);
+
   const handleOpenShareModal = useCallback(() => {
     setIsModalOpen(true);
   }, []);
@@ -66,13 +70,18 @@ export const Reel = memo<OwnProps>(({ film, id, isLiked, likesCount, setIsUnfold
     setIsModalOpen(false);
   }, [id, film.title]);
 
+  const handleDescriptionChange = useCallback((isUnfolded: boolean) => {
+    setIsUnfoldedDescriptionLocal(isUnfolded);
+    setIsUnfoldedDescription?.(isUnfolded);
+  }, [setIsUnfoldedDescription]);
+
   return (
-    <div className={styles.reel}>
+    <div className={buildClassName(styles.reel, isUnfoldedDescription && styles.withUnfoldedDescription)}>
       <video playsInline autoPlay loop muted className={styles.reelVideo}>
         <source src="https://static.mytonwallet.org/releases/3.4/ImprovedUi.mp4" type="video/mp4" />
         Your browser does not support the video tag. Please update your browser.
       </video>
-      <ReelFilmInfo {...film} setIsUnfoldedDescription={setIsUnfoldedDescription} />
+      <ReelFilmInfo {...film} setIsUnfoldedDescription={handleDescriptionChange} />
       <div className={styles.reelFilmVerticalButtons}>
         <ReelFilmLike isLiked={isLiked} likesCount={likesCount} />
         <IconButton mode="plain" size="l" onClick={handleOpenShareModal}>
