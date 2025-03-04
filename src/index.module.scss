@@ -11,8 +11,8 @@
 }
 
 body {
-  height: calc(100vh - var(--safe-area-inset-bottom));
-  height: calc(100dvh - var(--safe-area-inset-bottom));
+  height: 100vh;
+  height: 100dvh;
   overflow: scroll;
   margin: 0;
   padding: 0.5rem !important;
