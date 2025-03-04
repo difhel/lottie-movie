@@ -17,5 +17,6 @@
 
 .navbar {
   bottom: var(--safe-area-inset-bottom) !important;
+  padding-bottom: var(--safe-area-inset-bottom) !important;
   // box-shadow: 0 var(--safe-area-inset-bottom) 0 var(--safe-area-inset-bottom) var(--tg-theme-bg-color) !important;
 }
