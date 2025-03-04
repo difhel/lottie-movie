@@ -26,9 +26,6 @@ export const Reels = memo(() => {
     if (!window.Telegram?.WebApp) return undefined;
 
     try {
-      window.Telegram.WebApp.MainButton.setParams({
-        text: 'Поделиться',
-      })
       window.Telegram.WebApp.requestFullscreen();
       window.Telegram.WebApp.lockOrientation();
     } catch { /* do nothing - error can only be thrown on incorrect environment */ }
@@ -40,6 +37,14 @@ export const Reels = memo(() => {
       } catch { /* do nothing - error can only be thrown on incorrect environment */ }
     }
   }, []);
+
+  useEffect(() => {
+    if (sessionStorage.getItem('reelsStartFetchFrom')) {
+      const reelsStartFetchFrom = sessionStorage.getItem('reelsStartFetchFrom');
+      if (reelsStartFetchFrom) alert(`fetch from ${reelsStartFetchFrom}`);
+      sessionStorage.removeItem('reelsStartFetchFrom');
+    }
+  });
 
   return (
     <div className={buildClassName(styles.reels, isUnfoldedDescription && styles.withUnfoldedDescription)}>

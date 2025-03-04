@@ -24,6 +24,16 @@ function App() {
     }
   });
 
+  useEffectOnce(() => {
+    const startParam = window.Telegram?.WebApp.initDataUnsafe.start_param;
+    if (startParam) {
+      if (startParam.startsWith('reel_') && /^\d+$/.test(startParam.slice(5))) {
+        sessionStorage.setItem('reelsStartFetchFrom', startParam.slice(5));
+        setCurrentTab(TabbarItems.REELS);
+      }
+    }
+  })
+
   function renderTabContent() {
     switch (currentTab) {
       case TabbarItems.FILMS:
