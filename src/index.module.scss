@@ -11,6 +11,12 @@
 }
 
 body {
+  margin: 0;
+  box-sizing: border-box;
+  background: red !important;
+}
+
+html, body {
   height: 100vh;
   height: 100dvh;
   position: fixed;
@@ -18,19 +24,18 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  margin: 0;
-  padding: 0.5rem !important;
-  box-sizing: border-box;
-  background: red !important;
-}
-
-html {
   overscroll-behavior: none;
-  background: yellow !important;
   overflow: hidden;
 }
 
 :global {
+  #root {
+    height: 100%;
+    width: 100%;
+    padding: 0.5rem !important;
+    box-sizing: border-box;
+    overflow: scroll;
+  }
   body.ios {
     --navbar-height: calc(3.5625rem + var(--safe-area-inset-bottom)); // Navbar height + safe area inset bottom
   }
