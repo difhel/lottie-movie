@@ -12,3 +12,11 @@ export type ReelType = {
   isLiked: boolean;
   likesCount: number;
 }
+
+export type SearchSuggestionType = {
+  id: number;
+  title: string;
+  description: string;
+  subtitle: string;
+  image: string;
+}

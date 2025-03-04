@@ -53,3 +53,17 @@
 .modalCell {
   padding: 0 !important;
 }
+
+.createNoteModalSuggestions {
+  border: 0.0625rem solid var(--tgui--hint_color);
+  border-radius: 2rem;
+  padding: 0.5rem;
+  max-height: 19.125rem;
+  overflow: scroll;
+}
+
+.spinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

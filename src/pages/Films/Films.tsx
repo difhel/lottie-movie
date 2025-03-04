@@ -63,6 +63,7 @@ export const Films = memo(() => {
         open={isCreateNoteModalOpen}
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         onOpenChange={setIsCreateNoteModalOpen as any}
+        setIsOpen={setIsCreateNoteModalOpen}
       />
     </>
   )
