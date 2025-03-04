@@ -1,11 +1,18 @@
-import { memo, useState } from 'react'
-import { Button, ButtonCell, Modal, Title } from '@telegram-apps/telegram-ui'
+import { memo, useCallback, useState } from 'react'
+import { Button, Title } from '@telegram-apps/telegram-ui'
 import { NoteFilm } from './NoteFilm'
 import { NoteText } from './NoteText'
 import styles from './Films.module.scss'
 import { Icon20VideoAddSquareOutline } from '@vkontakte/icons'
+import { CreateNoteModal } from './CreateNoteModal'
 
 export const Films = memo(() => {
+  const [isCreateNoteModalOpen, setIsCreateNoteModalOpen] = useState(false);
+
+  const handleCreateNote = useCallback(() => {
+    setIsCreateNoteModalOpen(true);
+  }, []);
+
   return (
     <>
       <Title level="1" weight="1" plain={false}>
@@ -16,6 +23,7 @@ export const Films = memo(() => {
         className={styles.addFilmButton}
         mode="filled"
         size="s"
+        onClick={handleCreateNote}
       >
         Сохранить фильм в коллекцию
       </Button>
@@ -51,6 +59,11 @@ export const Films = memo(() => {
           onClick={() => { }}
         />
       </div>
+      <CreateNoteModal
+        open={isCreateNoteModalOpen}
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        onOpenChange={setIsCreateNoteModalOpen as any}
+      />
     </>
   )
 });

@@ -50,8 +50,7 @@ export const NoteFilm = memo<OwnProps>(({ title, image, subtitle, onClick }) => 
         }}
         header={<ModalHeader />}
         open={isDeleteModalOpen}
-        className={styles.deleteFilmModal}
-
+        className={styles.modal}
       >
         <Title level="2" weight="1" plain>
           Вы уверены, что хотите удалить фильм?
@@ -59,7 +58,7 @@ export const NoteFilm = memo<OwnProps>(({ title, image, subtitle, onClick }) => 
         <ButtonCell
           before={<Icon28DeleteOutlineAndroid />}
           onClick={() => setIsDeleteModalOpen(false)}
-          className={styles.deleteFilmModalCell}
+          className={styles.modalCell}
           mode="destructive"
         >
           Удалить
@@ -67,7 +66,7 @@ export const NoteFilm = memo<OwnProps>(({ title, image, subtitle, onClick }) => 
         <ButtonCell
           before={<Icon28CancelCircleOutline />}
           onClick={() => setIsDeleteModalOpen(false)}
-          className={styles.deleteFilmModalCell}
+          className={styles.modalCell}
         >
           Отменить
         </ButtonCell>
