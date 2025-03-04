@@ -7,6 +7,7 @@ import { Cell, IconButton, Modal, Snackbar, Title } from '@telegram-apps/telegra
 import { ModalHeader } from '@telegram-apps/telegram-ui/dist/components/Overlays/Modal/components/ModalHeader/ModalHeader';
 import { openUrl } from '../../util/openUrl';
 import { STORY_IMAGE_URL } from '../../config';
+import { downloadFile } from '../../util/downloadFile';
 interface OwnProps {
   film: {
     id: number;
@@ -58,6 +59,12 @@ export const Reel = memo<OwnProps>(({ film, id, isLiked, likesCount }) => {
     setIsModalOpen(false);
   }, [film.title, id]);
 
+  const handleDownload = useCallback(() => {
+    const url = `https://t.me/lottiemoviebot/app?startapp=reel_${id}`;
+    downloadFile(url, `${film.title}-${id}.mp4`);
+    setIsModalOpen(false);
+  }, [id, film.title]);
+
   return (
     <div className={styles.reel}>
       <video playsInline autoPlay loop muted className={styles.reelVideo}>
@@ -66,11 +73,11 @@ export const Reel = memo<OwnProps>(({ film, id, isLiked, likesCount }) => {
       </video>
       <ReelFilmInfo {...film} />
       <div className={styles.reelFilmVerticalButtons}>
-        <ReelFilmLike isLiked={false} likesCount={23} />
+        <ReelFilmLike isLiked={isLiked} likesCount={likesCount} />
         <IconButton mode="plain" size="l" onClick={handleOpenShareModal}>
           <Icon28ShareOutline className={styles.reelFilmVerticalButtonsIcon} />
         </IconButton>
-        <IconButton mode="plain" size="l">
+        <IconButton mode="plain" size="l" onClick={handleDownload}>
           <Icon28DownloadOutline className={styles.reelFilmVerticalButtonsIcon} />
         </IconButton>
       </div>

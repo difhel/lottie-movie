@@ -15,7 +15,7 @@ const reel: ReelType = {
     status: 'none',
   },
   isLiked: false,
-  likesCount: 0,
+  likesCount: 23,
 }
 
 export const Reels = memo(() => {
