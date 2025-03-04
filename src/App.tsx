@@ -41,7 +41,6 @@ function App() {
   }
 
   const defaultTheme = useTheme();
-  return <>1</>;
 
   return (
     <AppRoot appearance={currentTab === TabbarItems.REELS ? 'dark' : defaultTheme}>
