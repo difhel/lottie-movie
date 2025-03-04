@@ -6,6 +6,7 @@ import styles from './Films.module.scss'
 import { SearchSuggestion } from "../../components/SearchSuggestions/SearchSuggestion";
 import { useSearch } from "../../hooks/useSearch";
 import { EditNoteModal } from "./EditNoteModal";
+import { buildClassName } from "../../util/buildClassName";
 interface OwnProps {
   open: boolean;
   onOpenChange: NoneToVoidFunction;
@@ -33,7 +34,7 @@ export const CreateNoteModal = memo<OwnProps>(({ open, onOpenChange, setIsOpen }
         open={open}
         onOpenChange={onOpenChange}
         header={<ModalHeader />}
-        className={styles.modal}
+        className={buildClassName(styles.modal, isCreateTextModalOpen && styles.modalWithEditModal)}
         nested
       >
         <Title level="2" weight="1" plain>
