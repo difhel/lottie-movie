@@ -4,6 +4,7 @@ import { CardCell } from '@telegram-apps/telegram-ui/dist/components/Blocks/Card
 import styles from './Films.module.scss'
 import { Icon20DeleteOutlineAndroid, Icon20WriteOutline, Icon24WriteOutline, Icon28DeleteOutlineAndroid, Icon28CancelCircleOutline } from '@vkontakte/icons';
 import { ModalHeader } from '@telegram-apps/telegram-ui/dist/components/Overlays/Modal/components/ModalHeader/ModalHeader';
+import { EditNoteModal } from './EditNoteModal';
 
 interface OwnProps {
   title: string;
@@ -14,9 +15,14 @@ interface OwnProps {
 
 export const NoteText = memo<OwnProps>(({ title, urlPreview, subtitle, onClick }) => {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 
   const handleDelete = useCallback(() => {
     setIsDeleteModalOpen(true);
+  }, []);
+
+  const handleEdit = useCallback(() => {
+    setIsEditModalOpen(true);
   }, []);
 
   return (
@@ -24,7 +30,7 @@ export const NoteText = memo<OwnProps>(({ title, urlPreview, subtitle, onClick }
       <Card type="plain" onClick={onClick} className={styles.film}>
         <>
           <div className={styles.filmActions}>
-            <IconButton mode="gray" size="s" onClick={() => { }}>
+            <IconButton mode="gray" size="s" onClick={handleEdit}>
               <Icon20WriteOutline />
             </IconButton>
             <IconButton mode="gray" size="s" onClick={handleDelete}>
@@ -80,7 +86,14 @@ export const NoteText = memo<OwnProps>(({ title, urlPreview, subtitle, onClick }
         >
           Отменить
         </ButtonCell>
-      </Modal>  
+      </Modal>
+      <EditNoteModal
+        open={isEditModalOpen}
+        setIsOpen={setIsEditModalOpen}
+        modalType="edit"
+        currentName={title}
+        currentDescription={subtitle}
+      />
     </>
   )
 });

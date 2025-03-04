@@ -1,10 +1,11 @@
-import { ButtonCell, Cell, Input, Modal, Spinner, Tappable, Textarea, Title } from "@telegram-apps/telegram-ui"
+import { Cell, Input, Modal, Spinner, Tappable, Title } from "@telegram-apps/telegram-ui"
 import { ModalHeader } from "@telegram-apps/telegram-ui/dist/components/Overlays/Modal/components/ModalHeader/ModalHeader"
-import { Icon24CancelCircleOutline, Icon28Done, Icon28VideoAddSquareOutline } from "@vkontakte/icons";
+import { Icon24CancelCircleOutline, Icon28VideoAddSquareOutline } from "@vkontakte/icons";
 import { memo, useCallback, useState } from "react"
 import styles from './Films.module.scss'
 import { SearchSuggestion } from "../../components/SearchSuggestions/SearchSuggestion";
 import { useSearch } from "../../hooks/useSearch";
+import { EditNoteModal } from "./EditNoteModal";
 interface OwnProps {
   open: boolean;
   onOpenChange: NoneToVoidFunction;
@@ -21,18 +22,9 @@ export const CreateNoteModal = memo<OwnProps>(({ open, onOpenChange, setIsOpen }
   }, []);
 
   const [isCreateTextModalOpen, setIsCreateTextModalOpen] = useState(false);
-  const [textNoteName, setTextNoteName] = useState('');
-  const [textNoteDescription, setTextNoteDescription] = useState('');
 
   const handleClickNewText = useCallback(() => {
     setIsCreateTextModalOpen(true);
-    setTextNoteName(value);
-  }, []);
-
-  const handleSaveTextNote = useCallback(() => {
-    // TODO: create new note
-    setIsCreateTextModalOpen(false);
-    setIsOpen(false);
   }, []);
 
   return (
@@ -83,44 +75,13 @@ export const CreateNoteModal = memo<OwnProps>(({ open, onOpenChange, setIsOpen }
         </div>
       </Modal>
 
-      <Modal
+      <EditNoteModal
         open={isCreateTextModalOpen}
-        onOpenChange={setIsCreateTextModalOpen}
-        header={<ModalHeader />}
-        className={styles.modal}
-        nested
-      >
-        <Title level="2" weight="1" plain>
-          Создание текстовой заметки
-        </Title>
-        <Input
-          status="focused"
-          header="Заголовок"
-          placeholder="Заголовок заметки"
-          value={textNoteName}
-          onChange={e => setTextNoteName(e.target.value)}
-          after={<Tappable Component="div" style={{
-            display: 'flex'
-          }}
-            onClick={() => setTextNoteName('')}
-          >
-            <Icon24CancelCircleOutline />
-          </Tappable>} />
-        <Textarea
-          header="Описание заметки (необязательно)"
-          placeholder="Например, ссылка на видео или описание, почему вам хотелось бы в будущем вернуться к этому фильму."
-          value={textNoteDescription}
-          onChange={e => setTextNoteDescription(e.target.value)}
-        />
-        <ButtonCell
-          before={<Icon28Done />}
-          onClick={handleSaveTextNote}
-          className={styles.modalCell}
-        >
-          Сохранить
-        </ButtonCell>
-        
-      </Modal>
+        setIsOpen={setIsCreateTextModalOpen}
+        setIsOpenParent={setIsOpen}
+        modalType="new"
+        currentName={value}
+      />
     </>
   )
 });
