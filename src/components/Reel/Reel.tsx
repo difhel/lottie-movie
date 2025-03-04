@@ -89,7 +89,7 @@ export const Reel = memo<OwnProps>(({ film, id, isLiked, likesCount, setIsUnfold
             setIsModalOpen(false);
           }
         }}
-        header={<ModalHeader></ModalHeader>}
+        header={<ModalHeader />}
         open={isModalOpen}
         className={styles.reelShareModal}
 

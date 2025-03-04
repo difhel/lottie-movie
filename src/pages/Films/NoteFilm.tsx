@@ -1,43 +1,77 @@
-import { memo } from 'react'
-import { Card, IconButton } from '@telegram-apps/telegram-ui'
+import { memo, useState, useCallback } from 'react'
+import { ButtonCell, Card, IconButton, Modal, Title } from '@telegram-apps/telegram-ui'
 import { CardCell } from '@telegram-apps/telegram-ui/dist/components/Blocks/Card/components/CardCell/CardCell';
 import styles from './Films.module.scss'
-import { Icon20DeleteOutlineAndroid, Icon20WriteOutline } from '@vkontakte/icons';
+import { Icon20DeleteOutlineAndroid, Icon28CancelCircleOutline, Icon28DeleteOutlineAndroid } from '@vkontakte/icons';
+import { ModalHeader } from '@telegram-apps/telegram-ui/dist/components/Overlays/Modal/components/ModalHeader/ModalHeader';
 
 interface OwnProps {
   title: string;
   image: string;
   subtitle: string;
   onClick: NoneToVoidFunction;
-  onEdit: NoneToVoidFunction;
-  onDelete: NoneToVoidFunction;
 }
 
-export const NoteFilm = memo<OwnProps>(({ title, image, subtitle, onClick, onEdit, onDelete }) => {
-  return (
-    <Card type="plain" onClick={onClick} className={styles.film}>
-      <>
-        <div className={styles.filmActions}>
-          <IconButton mode="gray" size="s" onClick={onEdit}>
-            <Icon20WriteOutline />
-          </IconButton>
-          <IconButton mode="gray" size="s" onClick={onDelete}>
-            <Icon20DeleteOutlineAndroid />
-          </IconButton>
-        </div>
+export const NoteFilm = memo<OwnProps>(({ title, image, subtitle, onClick }) => {
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
-        <img
-          alt="Dog"
-          src={image}
-          className={styles.filmImage}
-        />
-        <CardCell
-          readOnly
-          subtitle={subtitle}
+  const handleDelete = useCallback(() => {
+    setIsDeleteModalOpen(true);
+  }, []);
+
+  return (
+    <>
+      <Card type="plain" onClick={onClick} className={styles.film}>
+        <>
+          <div className={styles.filmActions}>
+            <IconButton mode="gray" size="s" onClick={handleDelete}>
+              <Icon20DeleteOutlineAndroid />
+            </IconButton>
+          </div>
+
+          <img
+            alt="Dog"
+            src={image}
+            className={styles.filmImage}
+          />
+          <CardCell
+            readOnly
+            subtitle={subtitle}
+          >
+            {title}
+          </CardCell>
+        </>
+      </Card>
+      <Modal
+        onOpenChange={(open) => {
+          if (!open) {
+            setIsDeleteModalOpen(false);
+          }
+        }}
+        header={<ModalHeader />}
+        open={isDeleteModalOpen}
+        className={styles.deleteFilmModal}
+
+      >
+        <Title level="2" weight="1" plain>
+          Вы уверены, что хотите удалить фильм?
+        </Title>
+        <ButtonCell
+          before={<Icon28DeleteOutlineAndroid />}
+          onClick={() => setIsDeleteModalOpen(false)}
+          className={styles.deleteFilmModalCell}
+          mode="destructive"
         >
-          {title}
-        </CardCell>
-      </>
-    </Card>
+          Удалить
+        </ButtonCell>
+        <ButtonCell
+          before={<Icon28CancelCircleOutline />}
+          onClick={() => setIsDeleteModalOpen(false)}
+          className={styles.deleteFilmModalCell}
+        >
+          Отменить
+        </ButtonCell>
+      </Modal>
+    </>
   )
 });
