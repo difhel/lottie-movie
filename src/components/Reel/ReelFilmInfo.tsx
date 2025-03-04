@@ -6,7 +6,9 @@ import { useFlag } from '../../hooks/useFlag';
 import Collapsible from '../Collapsible/Collapsible';
 import { stopEvent } from '../../util/stopEvent';
 
-type OwnProps = FilmType;
+type OwnProps = FilmType & {
+  setIsUnfoldedDescription?: (isUnfolded: boolean) => void;
+};
 
 function getButtonMode(status: FilmType['status']) {
   switch (status) {
@@ -20,7 +22,7 @@ function getButtonMode(status: FilmType['status']) {
 }
 
 export const ReelFilmInfo = memo<OwnProps>(({
-  title, image, description, status,
+  title, image, description, status, setIsUnfoldedDescription,
 }) => {
   const [isOneLineDescription, collapseDescription, unfoldDescription] = useFlag(true);
 
@@ -30,13 +32,14 @@ export const ReelFilmInfo = memo<OwnProps>(({
     } else {
       collapseDescription();
     }
-  }, [isOneLineDescription, unfoldDescription, collapseDescription]);
+    setIsUnfoldedDescription?.(isOneLineDescription);
+  }, [isOneLineDescription, unfoldDescription, collapseDescription, setIsUnfoldedDescription]);
 
   return (
     <div className={styles.reelInfo} onTouchStart={handleClick}>
       <div className={styles.reelInfoContent}>
         <img src={image} alt={title} className={styles.reelImage} />
-        <Headline plain weight="2">{title}</Headline>
+        <Headline plain weight="2" className={styles.reelInfoFilmName}>{title}</Headline>
         <Button size="s" mode={getButtonMode(status)} onTouchStart={stopEvent}>
           {status === 'none' ? 'Сохранить' : status === 'saved' ? 'Сохранено' : 'Вы смотрели'}
         </Button>

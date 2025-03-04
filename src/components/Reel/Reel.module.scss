@@ -15,6 +15,7 @@
   padding-left: 0.5rem;
   padding-bottom: 0.5rem;
   padding-right: 0.5rem;
+  z-index: 3;
 }
 
 .reelInfoContent {
@@ -27,6 +28,10 @@
   border-radius: 100rem;
   height: 2rem;
   width: 2rem;
+}
+
+.reelInfoFilmName {
+  color: #ffffff;
 }
 
 .reelInfoDescription {

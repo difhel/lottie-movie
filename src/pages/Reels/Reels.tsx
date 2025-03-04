@@ -1,9 +1,10 @@
-import { memo, useEffect } from 'react'
+import { memo, useEffect, useState } from 'react'
 import { Reel } from '../../components/Reel/Reel';
 import { ReelType } from '../../types';
 import styles from './Reels.module.scss';
 import { TabsItem } from '@telegram-apps/telegram-ui/dist/components/Navigation/TabsList/components/TabsItem/TabsItem';
 import { TabsList } from '@telegram-apps/telegram-ui';
+import { buildClassName } from '../../util/buildClassName';
 
 const reel: ReelType = {
   id: 1,
@@ -19,6 +20,8 @@ const reel: ReelType = {
 }
 
 export const Reels = memo(() => {
+  const [isUnfoldedDescription, setIsUnfoldedDescription] = useState(false);
+
   useEffect(() => {
     if (!window.Telegram?.WebApp) return undefined;
 
@@ -39,7 +42,7 @@ export const Reels = memo(() => {
   }, []);
 
   return (
-    <div className={styles.reels}>
+    <div className={buildClassName(styles.reels, isUnfoldedDescription && styles.withUnfoldedDescription)}>
       <div className={styles.reelsHeader}>
         <TabsList>
           <TabsItem
@@ -55,7 +58,7 @@ export const Reels = memo(() => {
           </TabsItem>
         </TabsList>
       </div>
-      <Reel {...reel} />
+      <Reel {...reel} setIsUnfoldedDescription={setIsUnfoldedDescription} />
     </div>
   )
 });

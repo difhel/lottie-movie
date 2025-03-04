@@ -19,9 +19,10 @@ interface OwnProps {
   id: number;
   isLiked: boolean;
   likesCount: number;
+  setIsUnfoldedDescription?: (isUnfolded: boolean) => void;
 }
 
-export const Reel = memo<OwnProps>(({ film, id, isLiked, likesCount }) => {
+export const Reel = memo<OwnProps>(({ film, id, isLiked, likesCount, setIsUnfoldedDescription }) => {
   const [snackbar, setSnackbar] = useState<React.ReactNode>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const handleOpenShareModal = useCallback(() => {
@@ -71,7 +72,7 @@ export const Reel = memo<OwnProps>(({ film, id, isLiked, likesCount }) => {
         <source src="https://static.mytonwallet.org/releases/3.4/ImprovedUi.mp4" type="video/mp4" />
         Your browser does not support the video tag. Please update your browser.
       </video>
-      <ReelFilmInfo {...film} />
+      <ReelFilmInfo {...film} setIsUnfoldedDescription={setIsUnfoldedDescription} />
       <div className={styles.reelFilmVerticalButtons}>
         <ReelFilmLike isLiked={isLiked} likesCount={likesCount} />
         <IconButton mode="plain" size="l" onClick={handleOpenShareModal}>
