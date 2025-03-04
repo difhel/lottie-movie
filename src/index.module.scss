@@ -27,10 +27,10 @@ html {
 
 :global {
   body.ios {
-    --navbar-height: 3.5625rem;
+    --navbar-height: calc(3.5625rem + var(--safe-area-inset-bottom)); // Navbar height + safe area inset bottom
   }
   html {
-    --navbar-height: 5.375rem;
+    --navbar-height: calc(5.375rem + var(--safe-area-inset-bottom)); // Navbar height + safe area inset bottom
     --color-violet: #4200b3;
     --color-blue: #00b3ff;
     --safe-area-inset-bottom: calc(var(--tg-safe-area-inset-bottom, 0rem) + var(--tg-content-safe-area-inset-bottom, 0rem));
