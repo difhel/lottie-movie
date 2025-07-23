@@ -12,7 +12,7 @@ const mockReels: ReelType[] = Array.from({ length: 10 }, (_, i) => ({
   film: {
     id: i + 1,
     title: `Матрица`,
-    image: 'https://sun9-73.userapi.com/impg/SuIoCR_TkYHE31B_lwJFu6qyxwMhPp8UhVHQfw/X6_kd-GHxiE.jpg?size=600x338&quality=95&sign=226a56aed1b0978856b878cece14647c&type=album',
+    image: 'https://prod25.myinfra.dev/matrix.png',
     description: `Жизнь Томаса Андерсона разделена на две части: днём он — самый обычный офисный работник, получающий нагоняи от начальства, а ночью превращается в хакера по имени Нео, и нет места в сети, куда он бы не смог проникнуть. Но однажды всё меняется. Томас узнаёт ужасающую правду о реальности.`,
     status: 'none',
   },
