@@ -46,12 +46,6 @@ export const Films = memo(() => {
           subtitle="2017, Драма про парня с детдомовским прошлым"
           onClick={() => { }}
         />
-        <NoteText
-          title="Фильм от Насти"
-          //   urlPreview="https://i.imgur.com/892vhef.jpeg"
-          subtitle="Бля я забыл там аниме чета хз"
-          onClick={() => { }}
-        />
         <NoteFilm
           title="Основатель"
           image="https://sun9-74.userapi.com/impg/izmQMUWcGGOTlqMgSMdxvH4attbu3W6EJGs5QA/YHrGR72psks.jpg?size=554x554&quality=95&sign=b0c3766e306cbbda9a4b487082da51fc&type=album"

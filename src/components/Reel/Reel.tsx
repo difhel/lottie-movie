@@ -78,7 +78,7 @@ export const Reel = memo<OwnProps>(({ film, id, isLiked, likesCount, setIsUnfold
   return (
     <div className={buildClassName(styles.reel, isUnfoldedDescription && styles.withUnfoldedDescription)}>
       <video playsInline autoPlay loop muted className={styles.reelVideo}>
-        <source src="https://static.mytonwallet.org/releases/3.4/ImprovedUi.mp4" type="video/mp4" />
+        <source src="https://prod25.myinfra.dev/public/matrix.mp4" type="video/mp4" />
         Your browser does not support the video tag. Please update your browser.
       </video>
       <ReelFilmInfo {...film} setIsUnfoldedDescription={handleDescriptionChange} />
