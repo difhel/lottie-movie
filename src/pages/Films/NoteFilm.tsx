@@ -33,6 +33,7 @@ export const NoteFilm = memo<OwnProps>(({ title, image, subtitle, onClick }) => 
             alt="Dog"
             src={image}
             className={styles.filmImage}
+            loading="lazy"
           />
           <CardCell
             readOnly
